@@ -87,6 +87,9 @@ INDEXED = true
 ### Data collection
 App collects output of **netstat -stu** every 60 seconds to monitor packet loss and errors. Future plan includes gathering of syslog specific metrics, such as impstats
 
+### Syslog log file retention
+TODO. add section on *logrotate*, or a cron job with find
+
 # Troubleshooting
 When running into issues, consider the following:
 * When syslog daemon is not functioning as expected, or no data is collected, check `/var/log/messages` for clues
