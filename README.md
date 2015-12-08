@@ -32,8 +32,8 @@ The app was tested on Splunk 6.3+ on CentOS Linux 7.1. *rsyslog* and *syslog-ng*
 ## Configuration
 1. Read the documentation provided with the app, install app
 2. Make a decision on syslog daemon that will be used in your environment, read product specific deployment and configuration instructions:
-  * [rsyslog](https://github.com/hire-vladimir/SA-syslog_collection/rsyslog.md)
-  * [syslog-ng](https://github.com/hire-vladimir/SA-syslog_collection/static/syslog-ng.md)
+  * [rsyslog](https://github.com/hire-vladimir/SA-syslog_collection/blob/master/rsyslog.md)
+  * [syslog-ng](https://github.com/hire-vladimir/SA-syslog_collection/blob/master/syslog-ng.md)
 3. Configure Universal forwarders on the dedicated syslog machines to read output files. See *Universal forwarder configuration* for additional insights
 4. Use the app to view environment metrics
 
