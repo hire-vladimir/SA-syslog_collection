@@ -11,7 +11,7 @@ You are in the right place if your looking to configure *rsyslog* for remote col
 2. Place included `appserver/config/splunk.rsyslog.conf` in `/etc/rsyslog.d/`, modifying as needed
 3. Restart syslog daemon, follow *Applying changes* section for how-to
 
-## Applying changesM
+## Applying changes
 To apply configuration changes, the syslog daemon needs to be restarted by running `service rsyslog restart`
 
 # Troubleshooting
