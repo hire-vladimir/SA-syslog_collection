@@ -57,6 +57,13 @@ sourcetype = specialPort:syslog
 index = my_special_index
 #ignoreOlderThan = 7d
 disabled = true
+#
+# place "unclassified" / "catch-all" syslog into a special temp index
+[monitor:///var/log/remote/unclassified/*/*.log]
+host_segment = 5
+sourcetype = syslog
+index = syslog_unclassified
+disabled = true
 ```
 * Ensure UF `outputs.conf` has *forceTimebasedAutoLB* set to true, this will ensure data will evenly distribute across all available indexers and does not stick to any particular one
 ```
@@ -88,7 +95,10 @@ INDEXED = true
 App collects output of **netstat -stu** every 60 seconds to monitor packet loss and errors. Future plan includes gathering of syslog specific metrics, such as impstats
 
 ### Syslog log file retention
-TODO. add section on *logrotate*, or a cron job with find
+Syslog will keep writing files until disk space is exhausted. To deal with this, purge job needs to be configured. One way to perform this task is to setup a *cron* job, such as the one listed below. It will run daily at 1AM, look for files ending in *.log* within */var/log/remote* directory that are older then 7 days and purge them. Alternatively, *logrotate* or a custom script can be used for additional flexibility, particularly if extra logging around the purge process is needed.
+```
+0 1 * * * /usr/bin/find /var/log/remote -name '*.log' -mtime +7 -exec rm -f {} \;
+```
 
 # Troubleshooting
 When running into issues, consider the following:
