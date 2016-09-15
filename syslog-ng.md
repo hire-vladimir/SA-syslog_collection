@@ -25,7 +25,7 @@ Create the TLS certificates with the following commands
 # mv privkey.pem ../key.d
 ```
 
-Uncomment the following stanza in `/etc/syslog-ng/conf.d/splunk.conf`
+Modify the following stanza in `/etc/syslog-ng/conf.d/splunk.conf` as required
 ```
 # TLS encrypted
 source tls_remote {
@@ -72,5 +72,4 @@ root@x /e/syslog-ng#
 # Additional reference
 Following documentation are great reference material:
 * Admin guide - https://www.balabit.com/sites/default/files/documents/syslog-ng-ose-latest-guides/en/syslog-ng-ose-guide-admin/html/syslog-ng.conf.5.html
-* How to setup certificates
-  - http://www.nineproductions.com/syslog-ng-with-tls-setup-for-centralized-logging/
+* How to setup certificates - http://www.nineproductions.com/syslog-ng-with-tls-setup-for-centralized-logging/
