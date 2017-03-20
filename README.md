@@ -1,5 +1,3 @@
-[![PayPal donate button](https://img.shields.io/badge/paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7HYTU6BWTGQPE "Donate once-off to this project using Paypal")
-
 # Welcome
 While Splunk can listen for syslog data directly, for large implementation is it recommended to stand up dedicated collection infrastructure with a Universal forwarder for data forwarding to the indexer tier.
 
