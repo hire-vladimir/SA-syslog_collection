@@ -112,44 +112,6 @@ When running into issues, consider the following:
   * To see current state, run `sestatus | grep Current` enforcing indicates selinux is enabled
 * To validate data is streaming in, or specific format is used, try `tcpdump -Ani any "port 514 and host 10.200.1.1"`
 
-# Testing
-[sysloggen](https://subversion.assembla.com/svn/logzilla/scripts/contrib/sysloggen/) utility is great at generating syslog traffic to ensure infrastructure is functioning as expected. Tool could also be used to run load and loss tests.
-
-Syntax:
-```
-root@x /t/syslog# ./sysloggen --help
-
-
-LogZilla(tm) Syslog Generation Tool v1.0
-This tool is free for personal (home) use only.
-Please contact sales@logzilla.pro for permission to use elsewhere.
-
-Usage: sysloggen --dest <target1> [-d <target2>, ... ] --file <raw_messages_file> [Options]
-
-Options:
-  -d <ip/unix_socket>, --dest <ip/unix_socket>
-     IP address or Unix Domain socket name (when used together with the --unix option)
-  -f <raw_messages_file>, --file <raw_messages_file>
-      File name, file should contain preformatted syslog messages
-  -s, --file_source <ip>   Spoof file_source IP address using UDP transport  -i, --inet   Use the TCP (by default) or UDP (when used together with the --dgram option)
-  -u, --unix   Use a UNIX domain socket to send the messages to the target
-  -S, --stream Use a stream socket (TCP or unix-stream) to send the messages to the target
-  -D, --dgram  Use datagram socket (UDP or unix-dgram) to send the messages to the target
-  -r, <messages/second>, --rate <messages/second>
-      The number of messages generated per second, otherwise - max possible
-  -n <messages>, --number <messages>
-      Limit the number of messages to be sent
-  -l, --loop   Read the file specified in --file options in loop
-  -m <size>, --max-msg-size <size> Messages will be truncated if bigger then <size>
-  -h, --help   Print this message and exit
-  -v, --verbose    Make verbose output
-
-Example:
-Send 1 Million syslog events (loaded from the file "sample_cisco_ios.syslog") to 192.168.1.1 at a rate of 20k events/sec
-./sysloggen -d 192.168.1.1 -f sample_cisco_ios.syslog -n 1000000 -r 20000 -l
-root@x /t/syslog#
-```
-
 # Legal
 * *rsyslog* is a registered trademark of RSYSLOG
 * *syslog-ng* is a registered trademark of BalaBit IT Security
