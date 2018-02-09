@@ -25,7 +25,7 @@ Optionally, for high availability (HA) and robustness purposes, it is recommende
 ![SA-syslog_collection overview](https://raw.githubusercontent.com/hire-vladimir/SA-syslog_collection/master/static/screenshot.png)
 
 ## System requirements
-The app was tested on Splunk 6.3+ on CentOS Linux 7.1. *rsyslog* and *syslog-ng* are supported on linux based operating systems.
+The app was tested on Splunk 6.x+ and 7.x+ on CentOS Linux 7.1. *rsyslog* and *syslog-ng* are supported on linux based operating systems.
 
 ## Configuration
 1. Read the documentation provided with the app, install app
@@ -63,10 +63,14 @@ sourcetype = syslog
 index = syslog_unclassified
 disabled = true
 ```
-* Ensure UF `outputs.conf` has *forceTimebasedAutoLB* set to true, this will ensure data will evenly distribute across all available indexers and does not stick to any particular one
+* Ensure UF `outputs.conf` has *forceTimebasedAutoLB* set to true, this will ensure data will evenly distribute across all available indexers and does not stick to any particular one. For high syslog throughput scenarios, it is often necessary to also adjust *autoLBFrequency* to a lower value to ensure more frequent indexer switch; additionally, it might be necessary to adjust *parallelIngestionPipelines* in `server.conf` to improve data distribution on indexers. 
+
+For deployments utilizing Splunk 6.6 and above, consider use of *autoLBVolume* setting.
 ```
 [tcpout]
 forceTimebasedAutoLB = true
+autoLBFrequency = 10
+
 ```
 * Ensure UF `limits.conf` is not being throttled to ensure minimal latency
 ```
