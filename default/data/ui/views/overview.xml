@@ -26,7 +26,7 @@
       <chart>
         <title>UDP connections over time</title>
         <search>
-          <query>index="health_syslog" sourcetype="netstat:statistics" protocol=Udp | timechart sum(packets_received) sum(packet_receive_errors) by protocol</query>
+          <query>index="syslog_health" sourcetype="netstat:statistics" protocol=Udp | timechart sum(packets_received) sum(packet_receive_errors) by protocol</query>
           <earliest>$time2.earliest$</earliest>
           <latest>$time2.latest$</latest>
         </search>
